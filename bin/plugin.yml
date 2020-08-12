@@ -1,0 +1,5 @@
+main: com.smp.core;
+name: SMP
+version: 1.0
+author: Michele
+api-version: 1.16
