@@ -1,6 +1,6 @@
 main: com.smp.core.Main
 name: SMP
-version: 1.0.2
+version: 1.0.4
 author: Michele
 api-version: 1.16
 
@@ -9,3 +9,15 @@ commands:
     description: Changes user to creative (ONLY IF THE PLAYER IS NOT IN CREATIVE)
   gm:
     description: Changes user gamemode based on triggers.
+  fly:
+    description: Toggles fly on-off.
+  emobs:
+    description: Enables OP-MOBS challenge.
+  dmobs:
+    description: Disables OP-MOBS challenge.
+  heal:
+    description: Heals player.
+  feed:
+    description: Feeds player.
+  clearchat:
+    description: Clears chat.
