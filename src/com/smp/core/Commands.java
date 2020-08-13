@@ -74,6 +74,26 @@ public class Commands implements CommandExecutor {
                 p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.GOLD + " Chat cleared.");
             }
         }
+        if(label.equalsIgnoreCase("getpos")){
+            if(sender instanceof Player){
+                Player p = (Player) sender;
+                p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " " + String.valueOf(p.getLocation().getBlockX()));
+                p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " " + String.valueOf(p.getLocation().getBlockY()));
+                p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " " + String.valueOf(p.getLocation().getBlockZ()));
+            } else if(!(sender instanceof Player)){
+                sender.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "ERROR: " + ChatColor.RESET + "" + ChatColor.LIGHT_PURPLE + "Only players may execute this command!");
+            }
+        }
+        if(label.equalsIgnoreCase("nick")) {
+            if(args.length == 0) {
+                sender.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "ERROR: " + ChatColor.RESET + "" + ChatColor.YELLOW + "Incorrect arguments entered. Usage: /nick NICKNAME");
+            }
+        } else {
+            if(sender instanceof Player) {
+                Player p = (Player) sender;
+                p.setDisplayName(args[0]);
+            }
+        }
         return false;
     }
 }
