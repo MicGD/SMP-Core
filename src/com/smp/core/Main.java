@@ -1,16 +1,17 @@
-package com.dream.plugin;
+package com.smp.core;
 
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin{
-	
-	@Override
-	public void onEnable() {
-		getServer().getPluginManager().registerEvents(new Hunger(), this);
-	}
-	@Override
-	public void onDisable() {
-		
-	}
+public class Main extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+        getCommand("gmc").setExecutor(new Commands());
+        getServer().getPluginManager().registerEvents(new Hunger(), this);
+    }
+    @Override
+    public void onDisable() {
+
+    }
 }

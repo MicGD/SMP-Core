@@ -1,0 +1,8 @@
+main: com.smp.core.Main
+name: SMP
+version: 1.0
+author: Michele
+api-version: 1.16
+
+commands:
+  gmc:

@@ -1,5 +1,9 @@
-main: com.smp.core;
+main: com.smp.core.Main
 name: SMP
-version: 1.0
+version: 1.0.2
 author: Michele
 api-version: 1.16
+
+commands:
+  gmc:
+    description: Changes user to creative (ONLY IF THE PLAYER IS NOT IN CREATIVE)
