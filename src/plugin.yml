@@ -25,3 +25,5 @@ commands:
     description: Sends players coordinates.
   nick:
     description: Nicknames player.
+  hello:
+    description: Test

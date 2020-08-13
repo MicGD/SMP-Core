@@ -14,6 +14,7 @@ public class Main extends JavaPlugin {
         getCommand("clearchat").setExecutor(new Commands());
         getCommand("getpos").setExecutor(new Commands());
         getCommand("nick").setExecutor(new Commands());
+        getCommand("hello").setExecutor(new Commands());
         getServer().getPluginManager().registerEvents(new Hunger(), this);
     }
     @Override
