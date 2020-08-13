@@ -21,3 +21,9 @@ commands:
     description: Feeds player.
   clearchat:
     description: Clears chat.
+  getpos:
+    description: Sends players coordinates.
+  nick:
+    description: Nicknames player.
+  hello:
+    description: Test

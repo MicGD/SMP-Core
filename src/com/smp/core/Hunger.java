@@ -1,9 +1,7 @@
 package com.smp.core;
 
 import org.bukkit.*;
-import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.*;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.*;
