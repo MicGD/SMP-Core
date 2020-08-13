@@ -8,6 +8,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         getCommand("gmc").setExecutor(new Commands());
+        getCommand("gm").setExecutor(new Commands());
         getServer().getPluginManager().registerEvents(new Hunger(), this);
     }
     @Override
