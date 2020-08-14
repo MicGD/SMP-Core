@@ -15,7 +15,7 @@ public class Commands implements CommandExecutor {
         if (label.equalsIgnoreCase("gmc")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                if (p.getGameMode() == GameMode.SURVIVAL || p.getGameMode() == GameMode.ADVENTURE || p.getGameMode() == GameMode.SPECTATOR){
+                if (p.getGameMode() == GameMode.SURVIVAL || p.getGameMode() == GameMode.ADVENTURE || p.getGameMode() == GameMode.SPECTATOR) {
                     p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.GREEN + " Your game mode has been updated to " + ChatColor.BLUE + "" + ChatColor.BOLD + "CREATIVE!");
                     p.setGameMode(GameMode.CREATIVE);
                 } else {
@@ -26,7 +26,7 @@ public class Commands implements CommandExecutor {
         if (label.equalsIgnoreCase("gm")) { // command executor /gm
             if (sender instanceof Player) {
                 Player p = (Player) sender; // creates player entity
-                if (p.getGameMode() == GameMode.SURVIVAL || p.getGameMode() == GameMode.ADVENTURE || p.getGameMode() == GameMode.SPECTATOR){
+                if (p.getGameMode() == GameMode.SURVIVAL || p.getGameMode() == GameMode.ADVENTURE || p.getGameMode() == GameMode.SPECTATOR) {
                     p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.GREEN + " Your game mode has been updated to " + ChatColor.BLUE + "" + ChatColor.BOLD + "CREATIVE!");
                     p.setGameMode(GameMode.CREATIVE);
                     return true;
@@ -51,7 +51,7 @@ public class Commands implements CommandExecutor {
             }
         }
         if (label.equalsIgnoreCase("heal")) {
-            if(sender instanceof Player) {
+            if (sender instanceof Player) {
                 if (args.length == 0) {
                     Player p = (Player) sender;
                     p.sendMessage(ChatColor.GOLD + "You have been healed.");
@@ -70,14 +70,14 @@ public class Commands implements CommandExecutor {
             }
         }
         if (label.equalsIgnoreCase("feed")) {
-            if(sender instanceof Player) {
+            if (sender instanceof Player) {
                 Player p = (Player) sender;
                 p.sendMessage(ChatColor.GOLD + "You have been fed.");
                 p.setFoodLevel(20);
             }
         }
-        if(label.equalsIgnoreCase("clearchat")) {
-            if(sender instanceof Player) {
+        if (label.equalsIgnoreCase("clearchat")) {
+            if (sender instanceof Player) {
                 Player p = (Player) sender;
                 for (int i = 0; i < 100; i++) {
                     Bukkit.broadcastMessage("");
@@ -85,30 +85,35 @@ public class Commands implements CommandExecutor {
                 p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.GOLD + " Chat cleared.");
             }
         }
-        if(label.equalsIgnoreCase("getpos")){
-            if(sender instanceof Player){
+        if (label.equalsIgnoreCase("getpos")) {
+            if (sender instanceof Player) {
                 Player p = (Player) sender;
                 p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " " + String.valueOf(p.getLocation().getBlockX()));
                 p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " " + String.valueOf(p.getLocation().getBlockY()));
                 p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " " + String.valueOf(p.getLocation().getBlockZ()));
-            } else if(!(sender instanceof Player)){
+            } else if (!(sender instanceof Player)) {
                 sender.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "ERROR: " + ChatColor.RESET + "" + ChatColor.LIGHT_PURPLE + "Only players may execute this command!");
             }
         }
         if (label.equalsIgnoreCase("nick")) {
             if (args.length == 0) { //Sender only typed '/hello' and nothing else
-                sender.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "ERROR: " + ChatColor.RESET + ChatColor.LIGHT_PURPLE + "Incorrect arguments. Usage: /nick USERNAME" );
+                sender.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "ERROR: " + ChatColor.RESET + ChatColor.LIGHT_PURPLE + "Incorrect arguments. Usage: /nick USERNAME");
 
             } else { //Sender typed more then 1 argument, so args[0] can't be null.
                 if (args[0].equalsIgnoreCase(args[0])) { //Sender typed '/hello sir'
-                    if(sender instanceof Player) {
+                    if (sender instanceof Player) {
                         Player p = (Player) sender;
                         p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " Your nickname has been changed to " + ChatColor.BLUE + args[0].toUpperCase());
                         p.setDisplayName(args[0]);
                     }
                 }
             }
-            }
+        }
+        if (label.equalsIgnoreCase("teleport")) {
+            sender.sendMessage(ChatColor.DARK_RED + "" + ChatColor.BOLD + "ERROR: " + ChatColor.RESET + ChatColor.LIGHT_PURPLE + "This plugin is disabled for development.");
+            return true;
+        }
         return false;
     }
 }
+

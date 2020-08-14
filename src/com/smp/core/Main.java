@@ -15,6 +15,7 @@ public class Main extends JavaPlugin {
         getCommand("getpos").setExecutor(new Commands());
         getCommand("nick").setExecutor(new Commands());
         getCommand("hello").setExecutor(new Commands());
+        getCommand("teleport").setExecutor(new Commands());
         getServer().getPluginManager().registerEvents(new Hunger(), this);
     }
     @Override
