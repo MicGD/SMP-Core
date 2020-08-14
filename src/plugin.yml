@@ -1,6 +1,6 @@
 main: com.smp.core.Main
 name: SMP
-version: 1.0.8
+version: 1.0.9
 author: Michele
 api-version: 1.16
 
@@ -11,10 +11,6 @@ commands:
     description: Changes user gamemode based on triggers.
   fly:
     description: Toggles fly on-off.
-  emobs:
-    description: Enables OP-MOBS challenge.
-  dmobs:
-    description: Disables OP-MOBS challenge.
   heal:
     description: Heals player.
   feed:
@@ -27,3 +23,7 @@ commands:
     description: Nicknames player.
   teleport:
     description: Teleports a target player to somone else.
+  broadcast:
+    description: Broadcasts player input.
+  msg:
+    description: Private messages.
