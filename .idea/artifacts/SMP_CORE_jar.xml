@@ -3,7 +3,6 @@
     <output-path>$USER_HOME$/Desktop/serevr/plugins</output-path>
     <root id="archive" name="SMP_CORE.jar">
       <element id="module-output" name="SMP_CORE" />
-      <element id="extracted-dir" path="$USER_HOME$/Desktop/serevr/spigot-1.16.2.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
