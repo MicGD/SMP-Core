@@ -1,6 +1,6 @@
 main: com.smp.core.Main
 name: SMP
-version: 1.0.4
+version: 1.0.6
 author: Michele
 api-version: 1.16
 
@@ -25,5 +25,5 @@ commands:
     description: Sends players coordinates.
   nick:
     description: Nicknames player.
-  hello:
-    description: Test
+  teleport:
+    description: Teleports a target player to somone else.
