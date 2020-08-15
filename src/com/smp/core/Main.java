@@ -5,6 +5,7 @@ import com.smp.core.events.CreatureSpawn;
 import com.smp.core.events.PlayerJoin;
 import com.smp.core.events.PlayerLeave;
 import com.smp.core.events.PlayerMove;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -22,6 +23,9 @@ public class Main extends JavaPlugin {
         getCommand("teleport").setExecutor(new Commands());
         getCommand("broadcast").setExecutor(new Commands());
         getCommand("msg").setExecutor(new Commands());
+        getCommand("kill").setExecutor(new Commands());
+        getCommand("vault").setExecutor(new Commands());
+        getServer().getConsoleSender().sendMessage(ChatColor.RED + "Plugin developed by Michele Pipicelli!");
         getServer().getPluginManager().registerEvents(new CreatureSpawn(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerLeave(), this);

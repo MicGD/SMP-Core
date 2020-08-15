@@ -3,14 +3,18 @@ package com.smp.core.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Commands implements CommandExecutor {
+
+    private ArrayList<Player> list_Of_Flying_Players = new ArrayList<>();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -43,12 +47,43 @@ public class Commands implements CommandExecutor {
         if (label.equalsIgnoreCase("fly")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                if (p.getAllowFlight() == true) {
-                    p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " Flight mode " + ChatColor.RED + "disabled " + ChatColor.LIGHT_PURPLE + "for " + p.getName());
-                    p.setAllowFlight(false);
+                if(p.hasPermission("core.fly")){
+                    if(args.length == 0) {
+                        if (list_Of_Flying_Players.contains(p)) {
+                            list_Of_Flying_Players.remove(p);
+                            p.sendTitle(ChatColor.YELLOW + " Flight mode " + ChatColor.RED + "disabled " + ChatColor.LIGHT_PURPLE + "for " + p.getName(), "");
+                            p.setAllowFlight(false);
+                            return true;
+                        } else if (!(list_Of_Flying_Players.contains(p))){
+                            list_Of_Flying_Players.add(p);
+                            p.sendTitle(ChatColor.YELLOW + " Flight mode " + ChatColor.GREEN + "enabled " + ChatColor.LIGHT_PURPLE + "for " + p.getName(), "");
+                            p.setAllowFlight(true);
+                            return true;
+                        }
+                    } else if (args.length == 1){
+                        Player target = Bukkit.getPlayer(args[0]);
+                        if(target == null){
+                            p.sendTitle(ChatColor.YELLOW + "Target player is offline!", "");
+                            return true;
+                        } else {
+                            String targetName = target.getName();
+                            if(list_Of_Flying_Players.contains(target)){
+                                target.setAllowFlight(false);
+                                p.sendTitle(ChatColor.YELLOW + " Flight mode " + ChatColor.RED + "disabled " + ChatColor.LIGHT_PURPLE + "for " + targetName, "");
+                                list_Of_Flying_Players.remove(target);
+                                p.playSound(p.getLocation(), Sound.ENTITY_CAT_DEATH, 10, 20);
+                                return true;
+                            } else if (!(list_Of_Flying_Players.contains(target))) {
+                                target.setAllowFlight(true);
+                                p.sendTitle(ChatColor.YELLOW + " Flight mode " + ChatColor.GREEN + "enabled " + ChatColor.LIGHT_PURPLE + "for " + targetName, "");
+                                list_Of_Flying_Players.add(target);
+                                p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+                                return true;
+                            }
+                        }
+                    }
                 } else {
-                    p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " Flight mode " + ChatColor.GREEN + "enabled " + ChatColor.LIGHT_PURPLE + "for " + p.getName());
-                    p.setAllowFlight(true);
+                    p.sendTitle(ChatColor.YELLOW + " Insufficient permissions!", "");
                 }
             }
         }
@@ -181,6 +216,53 @@ public class Commands implements CommandExecutor {
                             return true;
                         }
                     }
+                }
+            }
+        }
+        if(label.equalsIgnoreCase("kill")){
+            if(!(sender.hasPermission("core.kill"))){
+                if(sender instanceof Player) {
+                    Player p = (Player) sender;
+                    p.sendTitle(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " Insufficient permissions!", "");
+                    return true;
+                }
+            } else {
+                if (args.length == 0) {
+                    if (!(sender instanceof Player)) {
+                        sender.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " Players only!");
+                        return true;
+                    } else {
+                        Player p = (Player) sender;
+                        p.setHealth(0);
+                        p.sendTitle(ChatColor.YELLOW + "Suicided", ChatColor.LIGHT_PURPLE + "Goodbye, cruel world.");
+                        return true;
+                    }
+                } else {
+                    Player p = (Player) sender;
+                    String senderName = p.getName();
+                    Player target = Bukkit.getPlayerExact(args[0]);
+                    String name = target.getName();
+                    sender.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " You have killed the great, " + ChatColor.RED + name.toUpperCase());
+                    target.sendTitle(ChatColor.YELLOW + "You have been murdered by", ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + senderName);
+                    target.setHealth(0);
+                    return true;
+                }
+            }
+        }
+        if(label.equalsIgnoreCase("vault")){
+            if(!(sender.hasPermission("core.vault"))){
+                sender.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " Insufficient permissions!");
+                return true;
+            }else {
+                if(!(sender instanceof Player)) {
+                    sender.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " Players only!");
+                    return true;
+                } else {
+                    Player p = (Player) sender;
+                    String playerName = p.getName();
+                    Inventory vault = Bukkit.createInventory(p, 9, playerName + "'s vault");
+                    p.openInventory(vault);
+                    return true;
                 }
             }
         }
