@@ -1,6 +1,6 @@
 main: com.smp.core.Main
 name: SMP
-version: 1.0.9
+version: 2.0
 author: Michele
 api-version: 1.16
 
@@ -23,7 +23,9 @@ commands:
     description: Nicknames player.
   teleport:
     description: Teleports a target player to somone else.
-  broadcast:
-    description: Broadcasts player input.
   msg:
     description: Private messages.
+  kill:
+    description: Kills player if no arguments.
+  vault:
+    description: Opens player's vault.
