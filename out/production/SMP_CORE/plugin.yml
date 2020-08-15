@@ -1,6 +1,6 @@
 main: com.smp.core.Main
 name: SMP
-version: 2.0
+version: 2.1.1
 author: Michele
 api-version: 1.16
 
@@ -27,5 +27,5 @@ commands:
     description: Private messages.
   kill:
     description: Kills player if no arguments.
-  vault:
-    description: Opens player's vault.
+  tpbow:
+    description: Gives player teleport bow.
