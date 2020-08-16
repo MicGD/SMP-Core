@@ -2,11 +2,12 @@ package com.smp.core;
 
 import com.smp.core.commands.Commands;
 import com.smp.core.commands.Fly;
-import com.smp.core.events.PlayerJoin;
-import com.smp.core.events.PlayerLeave;
-import com.smp.core.events.PlayerMove;
+import com.smp.core.commands.God;
+import com.smp.core.commands.VanishTest;
+import com.smp.core.events.*;
 import com.smp.core.teleportbow.commands.TeleportBow;
 import com.smp.core.teleportbow.events.TeleportBowEvent;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -24,7 +25,11 @@ public class Main extends JavaPlugin {
         getCommand("teleport").setExecutor(new Commands());
         getCommand("msg").setExecutor(new Commands());
         getCommand("kill").setExecutor(new Commands());
+        getCommand("god").setExecutor(new God());
         getCommand("tpbow").setExecutor(new TeleportBow(this));
+        getCommand("vanish").setExecutor(new VanishTest());
+        System.out.println(ChatColor.translateAlternateColorCodes('&', "&ePlugin enabling!"));
+        System.out.println(ChatColor.translateAlternateColorCodes('&', "&ePlugin enabled, developed by Michele Pipicelli."));
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerLeave(), this);
@@ -35,5 +40,7 @@ public class Main extends JavaPlugin {
     }
     @Override
     public void onDisable() {
+        System.out.println(ChatColor.translateAlternateColorCodes('&', "&cPlugin disabling!"));
+        System.out.println(ChatColor.translateAlternateColorCodes('&', "&cPlugin disabled!"));
     }
 }
