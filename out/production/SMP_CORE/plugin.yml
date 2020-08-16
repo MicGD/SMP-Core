@@ -1,6 +1,6 @@
 main: com.smp.core.Main
 name: SMP
-version: 2.1.1
+version: 2.2.0
 author: Michele
 api-version: 1.16
 
@@ -23,9 +23,16 @@ commands:
     description: Nicknames player.
   teleport:
     description: Teleports a target player to somone else.
+    aliases: [tp]
   msg:
     description: Private messages.
   kill:
     description: Kills player if no arguments.
   tpbow:
     description: Gives player teleport bow.
+  gui:
+    description: Opens a GUI.
+  god:
+    description: Makes the player God.
+  vanish:
+    description: Vanishes the player.

@@ -25,15 +25,12 @@ public class TeleportBowEvent implements Listener {
     public void onArrowLand(ProjectileHitEvent event) {
         Player p = (Player)event.getEntity().getShooter();
         ArrayList<String> tpbowlore = new ArrayList<>();
-        tpbowlore.add("Teleport");
         if(event.getEntity() instanceof Arrow) {
-            if(p.getInventory().getItemInMainHand().getItemMeta().getLore().equals(tpbowlore)){
-                Location loc = event.getEntity().getLocation();
+            Location loc = event.getEntity().getLocation();
 
-                p.teleport(loc);
-                p.playSound(p.getLocation(), Sound.ENTITY_ENDER_EYE_LAUNCH, 50, 5);
-                p.sendTitle(ChatColor.LIGHT_PURPLE + plugin.getConfig().getString("teleport-description"), "");
-            }
+            p.teleport(loc);
+            p.playSound(p.getLocation(), Sound.ENTITY_ENDER_EYE_LAUNCH, 50, 5);
+            p.sendTitle(ChatColor.LIGHT_PURPLE + plugin.getConfig().getString("teleport-description"), "");
         }
     }
 }
