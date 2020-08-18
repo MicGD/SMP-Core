@@ -14,8 +14,6 @@ import java.util.ArrayList;
 
 public class Commands implements CommandExecutor {
 
-    private ArrayList<Player> list_Of_Creative_Players = new ArrayList<>();
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("gmc")) {
@@ -32,15 +30,13 @@ public class Commands implements CommandExecutor {
         if (label.equalsIgnoreCase("gm")) { // command executor /gm
             if (sender instanceof Player) {
                 Player p = (Player) sender; // creates player entity
-                if (!(list_Of_Creative_Players.contains(p))) {
+                if (p.getGameMode().equals(GameMode.SURVIVAL) || p.getGameMode().equals(GameMode.ADVENTURE) || p.getGameMode().equals(GameMode.SPECTATOR)) {
                     p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.GREEN + " Your game mode has been updated to " + ChatColor.BLUE + "" + ChatColor.BOLD + "CREATIVE!");
                     p.setGameMode(GameMode.CREATIVE);
-                    list_Of_Creative_Players.add(p);
                     return true;
-                } else if (list_Of_Creative_Players.contains(p)){
+                } else if (p.getGameMode().equals(GameMode.CREATIVE)){
                     p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.GREEN + " Your game mode has been updated to " + ChatColor.RED + "" + ChatColor.BOLD + "SURVIVAL!");
                     p.setGameMode(GameMode.SURVIVAL);
-                    list_Of_Creative_Players.remove(p);
                     return true;
                 }
             }
