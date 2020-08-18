@@ -15,6 +15,6 @@ public class PlayerChatHandler implements Listener {
         e.setCancelled(true);
         String message = e.getMessage();
         Player p = e.getPlayer();
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8" + e.getPlayer().getName() + ": &r" + message));
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8" + e.getPlayer().getDisplayName() + ": &r" + message));
     }
 }

@@ -102,7 +102,7 @@ public class Commands implements CommandExecutor {
                     if (sender instanceof Player) {
                         Player p = (Player) sender;
                         p.sendMessage(ChatColor.YELLOW + ">>>" + ChatColor.LIGHT_PURPLE + " Your nickname has been changed to " + ChatColor.BLUE + args[0].toUpperCase());
-                        p.setDisplayName(args[0]);
+                        p.setDisplayName(ChatColor.translateAlternateColorCodes('&', args[0]));
                     }
                 }
             }
@@ -167,6 +167,7 @@ public class Commands implements CommandExecutor {
                             String name = sender.getName();
                             String targetName = target.getName();
                             joined.replace(targetName, "");
+                            joined.replace(args[0], "");
                             sender.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + targetName + ChatColor.YELLOW + " -->" + ChatColor.RED + " " + name + ChatColor.YELLOW + "] " + joined);
                             target.sendMessage(ChatColor.YELLOW + "[" + ChatColor.RED + name + ChatColor.YELLOW + " -->" + ChatColor.RED + " " + targetName + ChatColor.YELLOW + "] " + joined);
                             return true;
